@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom';
 import { createMemoryHistory, createBrowserHistory } from 'history';
 import App from './App';
 
-const mount = (element, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (element, {
+  onNavigate,
+  onSignIn,
+  defaultHistory,
+  initialPath
+}) => {
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   });
@@ -13,7 +18,7 @@ const mount = (element, { onNavigate, defaultHistory, initialPath }) => {
   }
 
   ReactDOM.render(
-    <App history={history} />,
+    <App history={history} onSignIn={onSignIn} />,
     element,
   )
 
