@@ -7,20 +7,20 @@ const devConfig = {
   mode: 'development',
   devtool: 'eval-source-map',
   output: {
-    publicPath: 'http://localhost:8080/',
+    publicPath: 'http://localhost:8082/',
   },
   devServer: {
-    port: 8080,
+    port: 8082,
     historyApiFallback: {
       index: '/index.html',
     },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'HostContainer',
-      remotes: {
-        marketing: 'MarketingModule@http://localhost:8081/remoteEntry.js',
-        auth: `AuthModule@http://localhost:8082/remoteEntry.js`,
+      name: 'AuthModule',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './AuthApp': './src/bootstrap'
       },
       shared: packageJson.dependencies,
     }),

@@ -29,7 +29,7 @@ const mount = (element, { onNavigate, defaultHistory, initialPath }) => {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  const element = document.getElementById('_marketing-dev-root');
+  const element = document.getElementById('_auth-dev-root');
   
   if (element) {
     mount(element, { 
